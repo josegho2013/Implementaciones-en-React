@@ -1,0 +1,25 @@
+.form{
+    border: solid black 2px;
+    padding: 9%;
+    width: 16%;
+    margin-inline: auto;
+    border-radius: 29px;
+}
+ .button-add{
+    background-color: #fb0000;
+    padding: 7%;
+    width: 102%;
+    margin-top: 10%;
+    border-radius: 12px;
+    color: white;
+    font-size: 17px;
+ }
+
+ .input{
+    width: 100%;
+    height: 26px;
+    border-radius: 7px;
+    text-align: center;
+}
+
+ 
