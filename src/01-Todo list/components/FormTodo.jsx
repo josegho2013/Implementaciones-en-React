@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/todoList.css"
+import "../css/todoList.css";
 
 const FormTodo = (props) => {
   const { handleAddItem } = props;
@@ -17,6 +17,7 @@ const FormTodo = (props) => {
 
   return (
     <div>
+      <div className="img_ppal" />
       <h1 className="title"> To Do List</h1>
       <form className="form" onSubmit={handleSubmit}>
         <div>
@@ -27,7 +28,10 @@ const FormTodo = (props) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <button className="buttonAdd" disabled={description ? "" : "disabled"}>
+          <button
+            className="buttonAdd"
+            disabled={description ? "" : "disabled"}
+          >
             Add
           </button>
         </div>
