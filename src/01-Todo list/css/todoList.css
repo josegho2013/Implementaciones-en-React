@@ -1,0 +1,22 @@
+.form {
+  text-align: center;
+  border: 1px solid #1e679a;
+}
+
+.title {
+  text-align: center;
+}
+
+.text {
+  height: 34px;
+  width: 304px;
+}
+.button {
+  height: 40px;
+  width: 105px;
+  background-color: rgb(157, 157, 247);
+  font-size: large;
+}
+.button[disabled] {
+  opacity: 0.5;
+}
