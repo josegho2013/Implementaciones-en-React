@@ -1,6 +1,5 @@
 .form {
   text-align: center;
-  border: 1px solid #1e679a;
 }
 
 .title {
@@ -8,15 +7,128 @@
 }
 
 .text {
-  height: 34px;
-  width: 304px;
+  height: 41px;
+  width: 315px;
+  text-align: center;
+  font-size: 20px;
+  
 }
 .button {
   height: 40px;
-  width: 105px;
-  background-color: rgb(157, 157, 247);
+  width: 164px;
+  background-color: rgb(248, 8, 8);
+  color: white;
+  font-size: 19px;
+  border-radius: 13px;
+}
+.buttonAdd[disabled] {
+  opacity: 0.7;
+  height: 47px;
+  width: 116px;
+  background-color: rgb(8 237 106);
   font-size: large;
 }
-.button[disabled] {
-  opacity: 0.5;
+
+.buttonAdd {
+  opacity: 1.5;
+  height: 47px;
+  width: 118px;
+  background-color: rgb(15, 246, 65);
+  
+  font-size: large;
+}
+
+html {
+  background: #ddd;
+  height: 100%;
+  display: flex;
+}
+body {
+  width: 100%;
+  margin: auto;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.todo-list {
+  background: #eaedf3;
+  font-size: 21px;
+  max-width: 438px;
+  margin: auto;
+  margin-bottom: 95px;
+  padding: 0px 0px;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 20%);
+  border-radius: 5px;
+}
+
+.file-input {
+  padding: 2px;
+  background: #f8f8f8;
+}
+
+.file-input  {
+  outline: none;
+  padding: 0px 10px;
+  font-size: 15px;
+  width: 230px;
+  height: 46px;
+  background: transparent;
+  border: 0px solid;
+}
+
+.todo {
+  display: block;
+  position: relative;
+  padding: 1em 7em 2em 35%;
+  margin: 0px -1px;
+  cursor: pointer;
+  border-bottom: solid 3px seagreen;
+}
+
+.todo.new-item {
+  opacity: 5;
+  transform: translateX(0px);
+  animation: fadeIn 0.3s linear forwards;
+  text-align: center;
+}
+
+.todo__state {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.todo__icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  margin: auto;
+
+  fill: none;
+  stroke: stroke;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.todo__text {
+  color:rgb(0, 89, 255);
+  text-align: left;
+  
+}
+
+.todo__state {
+  position: absolute;
+  top: 18px;
+  left: 13px;
+  opacity: 1;
+  width: 149px;
+  height: 27px;
 }
