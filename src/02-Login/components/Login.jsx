@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/login.css";
-import { FcGoogle } from 'react-icons/fa';
+import { FcGoogle } from "react-icons/fc";
+import { AiFillFacebook, AiFillApple } from "react-icons/ai";
 
 const Login = () => {
   return (
@@ -11,26 +12,35 @@ const Login = () => {
           <div>
             <label> Email</label>
           </div>
-          <input
-          className="input"
-          type="text" />
+          <input className="input" type="text" />
         </div>
         <div>
           <label> Password</label>
         </div>
         <div>
-        <input type="password"
-        className="input" />
+          <input type="password" className="input" />
         </div>
         <div>
           <button className="button-add">Login</button>
         </div>
 
         <div>
-            <p>Start Section With</p>
+          <p>Start Section With</p>
         </div>
-        <div>
-            <p> </p>
+        <div className="icon">
+          <button>
+            {" "}
+            <FcGoogle className="google" />{" "}
+          </button>
+
+          <button>
+            {" "}
+            <AiFillFacebook className="face" />
+          </button>
+          <button>
+            {" "}
+            <AiFillApple className="app" />
+          </button>
         </div>
       </form>
     </div>
