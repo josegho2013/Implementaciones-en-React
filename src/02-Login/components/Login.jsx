@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../css/login.css";
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook, AiFillApple } from "react-icons/ai";
@@ -21,7 +22,9 @@ const Login = () => {
           <input type="password" className="input" />
         </div>
         <div>
+        <Link to="/Signup">
           <button className="button-add">Login</button>
+          </Link>
         </div>
 
         <div>
