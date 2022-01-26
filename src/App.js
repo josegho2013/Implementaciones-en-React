@@ -3,6 +3,9 @@ import Container from "./01-Todo list/components/Container";
 import Login from "./02-Login/components/Login";
 import Signup from "./02-Login/components/Signup"
 // import Crud from "./03-Crud/component/"
+import Search from "./04-Consumo de Api/components/Search"
+
+
 import "./App.css";
 
 function App() {
@@ -11,6 +14,8 @@ function App() {
       <Route exact path="/Todo" component={Container} />
       <Route exact path="/Login" component={Login} />
       <Route exact path="/Signup" component={Signup} />
+      <Route exact path="/search" component={Search} />
+
       
 
     </div>
