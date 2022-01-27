@@ -1,9 +1,10 @@
 import { React, useState } from "react";
 import { useEffect } from "react";
 import Card from "./Card";
+import "./styles/styles.css"
 const axios = require("axios");
 const API_KEY = "25429544-c8c9eb5d0b1ad0c7612e529d6";
-// const { API_KEY } = process.env;
+
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -16,8 +17,8 @@ const Search = () => {
 
     setData(apiUrl.data.hits);
   };
-  console.log("data, ", data);
-  useEffect(() => {}, []);
+ 
+  // useEffect(() => {}, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -31,7 +32,7 @@ const Search = () => {
           data.map((po) => {
             return (
               <Card
-                image={po.image}
+                image={po.webformatURL}
                 views={po.views}
                 likes={po.likes}
                 comments={po.comments}
@@ -40,10 +41,10 @@ const Search = () => {
             );
           })
         ) : (
-          <div>Loading...</div>
+          <div></div>
         )}
       </div>
-      <form onSubmit={(e) => handleSearch(e)}>
+      <form className="navbar_search" onSubmit={(e) => handleSearch(e)}>
         <input
           type="search"
           placeholder="search..."
