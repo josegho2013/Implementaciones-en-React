@@ -10,19 +10,19 @@ const Card = ({ image, views, likes, comments, downloads }) => {
     <div className="card">
       <img  className="img" src={image} alt="" height="550px" width="500px" />
       <div>
-        <h5>
-          views: {views} <FaRegEye size="2rem" />
+        <h5 className="icon">
+          Likes: {likes} <AiFillLike size="2rem" />
         </h5>
-        <h5>
-          likes: {likes} <AiFillLike size="2rem" />
-        </h5>
-
-        <h5>
-          comments :{comments} <FaComments size="2rem" />
+        <h5 className="icon">
+          Views: {views} <FaRegEye size="2rem" className="vi" />
         </h5>
 
-        <h5>
-          downloads: {downloads} <FiDownload size="2rem" />
+        <h5 className="icon">
+          Comments :{comments} <FaComments size="2rem" />
+        </h5>
+
+        <h5 className="icon">
+          Downloads: {downloads} <FiDownload size="2rem" />
         </h5>
       </div>
     </div>

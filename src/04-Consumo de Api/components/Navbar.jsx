@@ -2,6 +2,7 @@ import { React, useState } from "react";
 
 import Card from "./Card";
 import "./styles/styles.css";
+import pixa from "./styles/pixa.jpg"
 const axios = require("axios");
 const API_KEY = "25429544-c8c9eb5d0b1ad0c7612e529d6";
 
@@ -25,14 +26,17 @@ const Navbar = () => {
   return (
     <div>
       <div>
+      {/* <img   className="imgnavbar" src={pixa}alt="pixa" height="550px" width="700px" /> */}
+         
         <form className="navbar_search" onSubmit={(e) => handleSearch(e)}>
           <input
+          className="input"
             type="search"
             placeholder="search..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button type="submit">Search</button>
+          <button className="button" type="submit">Search</button>
         </form>
         <div className="cards">
           {data.length > 0 ? (

@@ -11,13 +11,30 @@
     display: flex;
     justify-content: flex-end;
     margin: auto;
-    padding: 30px 9%;
-    justify-content: space-between;
+    padding: 113px 9%;
+     justify-content: center;
+     background-color: rgb(201 179 21);;
     align-items: center;
-    background-color: cadetblue;
+    /* background-image: url("./pixabay-5326292_1280.webp"); */
     font-family: "Urbanist";
   }
 
+  .input{
+    width: 10%;
+    height: 15%;
+  }
+.button{
+  width: 10%;
+  height: 15%;
+}
+.vi{
+  margin-left: 10%;
+}
+
+.icon{
+  margin-left: 10%;
+}
+  
   .card{
     display: grid;
     justify-content: space-around;
@@ -35,7 +52,7 @@
     box-shadow: 6px 6px 10px rgb(71 71 71 / 43%);
   }
  .img{
-  border-radius: 1%;
+  border-radius: 13%;
   width: 100%;
  }
  
