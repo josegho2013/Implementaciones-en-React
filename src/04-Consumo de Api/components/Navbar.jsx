@@ -34,7 +34,7 @@ const Navbar = () => {
           />
           <button type="submit">Search</button>
         </form>
-        <div>
+        <div className="cards">
           {data.length > 0 ? (
             data.map((po) => {
               return (

@@ -1,5 +1,15 @@
+.cards{
+  display: grid;
+  grid: auto-flow dense / 1fr 1fr  ;
+  justify-content: space-around;
+  text-align: center;
+
+}
+
+
 .navbar_search {
-    display: flex;;
+    display: flex;
+    justify-content: flex-end;
     margin: auto;
     padding: 30px 9%;
     justify-content: space-between;
@@ -7,3 +17,25 @@
     background-color: cadetblue;
     font-family: "Urbanist";
   }
+
+  .card{
+    display: grid;
+    justify-content: space-around;
+    text-align: center;
+    width: 82%;
+    height: 93%;
+    margin-top: 7%;
+    margin-left: 5%;
+    align-items: center;
+    /* cursor: pointer; */
+    border-radius: 81px;
+    border: 1px solid #797979;
+    flex: 0 0 30%;
+    background-color: hsla(0, 0%, 94.5%, 0.8);
+    box-shadow: 6px 6px 10px rgb(71 71 71 / 43%);
+  }
+ .img{
+  border-radius: 1%;
+  width: 100%;
+ }
+ 
