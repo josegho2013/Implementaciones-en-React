@@ -1,4 +1,4 @@
-.form {
+/* .form {
   text-align: center;
 }
 
@@ -36,24 +36,24 @@
   background-color: rgb(15, 246, 65);
   
   font-size: large;
-}
+} */
 
-html {
+/* html {
   background: #ddd;
   height: 100%;
-  display: flex;
-}
+  display: flex; */
+/* }
 body {
   width: 100%;
   margin: auto;
-}
-
+} */
+/* 
 .App {
   font-family: sans-serif;
   text-align: center;
-}
+} */
 
-.todo-list {
+/* .todo-list {
   background: #eaedf3;
   font-size: 21px;
   max-width: 438px;
@@ -140,4 +140,4 @@ body {
   background-position-x: center;
   width: 100%;
   height: 200px;
-}
+} */
