@@ -1,44 +1,56 @@
 import { React, useState } from "react";
 import { useEffect } from "react";
+import Card from "./Card";
 const axios = require("axios");
-const API_KEY = "25429544-c8c9eb5d0b1ad0c7612e529d6"
+const API_KEY = "25429544-c8c9eb5d0b1ad0c7612e529d6";
 // const { API_KEY } = process.env;
 
 const Search = () => {
-  const getPixabay = async (payload) => {
-    const apiUrl = await axios.get(`https://pixabay.com/api/?key=${API_KEY}&q=${payload}`);
-    console.log(API_KEY, "API_KEY");
-    console.log(apiUrl, "apiUrl");
-    
-
-
-
-  };
-  useEffect(() => {
-    
-  }, []);
-
   const [search, setSearch] = useState("");
- 
+  const [data, setData] = useState([]);
+
+  const getPixabay = async (payload) => {
+    const apiUrl = await axios.get(
+      `https://pixabay.com/api/?key=${API_KEY}&q=${payload}`
+    );
+
+    setData(apiUrl.data.hits);
+  };
+  console.log("data, ", data);
+  useEffect(() => {}, []);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    getPixabay(search)
-   
+    getPixabay(search);
   };
-
 
   return (
     <div>
-      <form onSubmit={(e) => handleSearch(e)} >
-      <input
+      <div>
+        {data.length > 0 ? (
+          data.map((po) => {
+            return (
+              <Card
+                image={po.image}
+                views={po.views}
+                likes={po.likes}
+                comments={po.comments}
+                downloads={po.downloads}
+              />
+            );
+          })
+        ) : (
+          <div>Loading...</div>
+        )}
+      </div>
+      <form onSubmit={(e) => handleSearch(e)}>
+        <input
           type="search"
           placeholder="search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
         <button type="submit">Search</button>
-
       </form>
     </div>
   );
