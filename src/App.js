@@ -5,7 +5,7 @@ import Signup from "./02-Login/components/Signup"
 import Crud from "./03-Crud/components/Crud"
 import Navbar from "./04-Consumo de Api/components/Navbar";
 import Quizz from "./05-Quizz-React/componenets/Quizz"
-import Modal from "./06-Modal/components/Modal"
+import PoPup from "./06-Modal/components/PoPup"
 import "./App.css";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
       <Route exact path="/crud" component={Crud} />
       <Route exact path="/Signup" component={Signup} />
       <Route exact path="/quizz" component={Quizz} />
-      <Route exact path="/modal" component={Modal} />
+      <Route exact path="/modal" component={PoPup} />
 
 
 
