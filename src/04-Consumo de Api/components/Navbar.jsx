@@ -2,7 +2,7 @@ import { React, useState } from "react";
 
 import Card from "./Card";
 import "./styles/styles.css";
-import pixa from "./styles/pixa.jpg"
+
 const axios = require("axios");
 const API_KEY = "25429544-c8c9eb5d0b1ad0c7612e529d6";
 
