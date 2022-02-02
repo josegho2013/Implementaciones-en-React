@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Table,
   Button,
@@ -13,23 +13,101 @@ import {
 } from "reactstrap";
 // import "../css/styles.css"
 
-const data = [
+const palo = [
   { id: 1, personaje: "Naruto", anime: "Naruto" },
   { id: 2, personaje: "Goku", anime: "Dragon Ball" },
   { id: 3, personaje: "Kenshin Himura", anime: "Rurouni Kenshin" },
   { id: 4, personaje: "Monkey D. Luffy", anime: "One Piece" },
-  {id: 5,personaje: "Edward Elric",anime: "Fullmetal Alchemist: Brotherhood",},
+  {
+    id: 5,
+    personaje: "Edward Elric",
+    anime: "Fullmetal Alchemist: Brotherhood",
+  },
   { id: 6, personaje: "Seto Kaiba", anime: "Yu-Gi-Oh!" },
 ];
+// console.log("01INFO", info)
 
 const Crud = () => {
-  // const[data, setData]=useState
+  const [info, setInfo] = useState(palo);
+  const [modalActualizar, setModalActualizar] = useState(false);
+  const [modalInsertar, setModalInsertar] = useState(false);
+
+  const [input, setInput] = useState({
+    id: 0,
+    personaje: "",
+    anime: "",
+  });
+
+  const mostrarModalActualizar = (dato) => {
+    setModalActualizar(input)
+    setModalActualizar(true)
+    
+  };
+
+  const cerrarModalActualizar = () => {
+    setModalActualizar(false);
+  };
+
+  const mostrarModalInsertar = () => {
+    setModalInsertar(true);
+  };
+
+  const cerrarModalInsertar = () => {
+    setModalInsertar(false);
+  };
+
+  const insertar = () => {
+    let test = info
+    test.push(input)
+    setInfo(test);
+    setModalInsertar(false);
+  };
+
+  const editar = (dato) => {
+    var contador = 0;
+
+    info.map((item) => {
+      if (dato.id == item.id) {
+        info[contador].personaje = dato.personaje;
+        info[contador].anime = dato.anime;
+      }
+      contador++;
+    });
+    setInfo({ data: info, modalActualizar: false });
+  };
+
+  const eliminar = (dato) => {
+    var opcion = window.confirm(
+      "Estás Seguro que deseas Eliminar el elemento " + dato.id
+    );
+    if (opcion == true) {
+      var contador = 0;
+      var arreglo = info;
+      arreglo.map((item) => {
+        if (dato.id == item.id) {
+          arreglo.splice(contador, 1);
+        }
+        contador++;
+      });
+      setInfo({ data: arreglo, modalActualizar: false });
+    }
+  };
+
+  const handleChange = (e) => {
+    setInput({
+      ...input,
+      id: info.length + 1,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   return (
     <div>
       <Container>
         <br />
-        <Button color="success">Insertar Nuevo Personaje</Button>
+        <Button color="success" onClick={() => mostrarModalInsertar()}>
+          Insertar Nuevo Personaje
+        </Button>
         <br />
         <br />
         <Table>
@@ -42,145 +120,138 @@ const Crud = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => (
-              <tr key={item.id}>
-                <td>{item.id}</td>
-                <td>{item.personaje}</td>
-                <td>{item.anime}</td>
+            {info.length > 0 &&
+              info?.map((dato) => {
+                console.log("dato",dato)
+                return (
+                  <tr key={dato.id}>
+                    <td>{dato.id}</td>
+                    <td>{dato.personaje}</td>
+                    <td>{dato.anime}</td>
 
-                <td>
-                  <Button color="primary">Editar</Button>{" "}
-                  <Button color="danger">Eliminar</Button>
-                </td>
-              </tr>
-            ))}
+                    <td>
+                      <Button
+                        color="primary"
+                        onClick={() => mostrarModalActualizar(dato)}
+                      >
+                        Editar
+                      </Button>{" "}
+                      <Button color="danger" onClick={() => eliminar(dato)}>
+                        Eliminar
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </Table>
       </Container>
 
-      {/* <Modal isOpen={this.state.modalActualizar}>
-          <ModalHeader>
-           <div><h3>Editar Registro</h3></div>
-          </ModalHeader>
+      <Modal isOpen={modalActualizar}>
+        <ModalHeader>
+          <div>
+            <h3>Editar Registro</h3>
+          </div>
+        </ModalHeader>
 
-          <ModalBody>
-            <FormGroup>
-              <label>
-               Id:
-              </label>
-            
-              <input
-                className="form-control"
-                readOnly
-                type="text"
-                value={this.state.form.id}
-              />
-            </FormGroup>
-            
-            <FormGroup>
-              <label>
-                Personaje: 
-              </label>
-              <input
-                className="form-control"
-                name="personaje"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.form.personaje}
-              />
-            </FormGroup>
-            
-            <FormGroup>
-              <label>
-                Anime: 
-              </label>
-              <input
-                className="form-control"
-                name="anime"
-                type="text"
-                onChange={this.handleChange}
-                value={this.state.form.anime}
-              />
-            </FormGroup>
-          </ModalBody>
+        <ModalBody>
+          <FormGroup>
+            <label>Id:</label>
 
-          <ModalFooter>
-            <Button
-              color="primary"
-              onClick={() => this.editar(this.state.form)}
-            >
-              Editar
-            </Button>
-            <Button
-              color="danger"
-              onClick={() => this.cerrarModalActualizar()}
-            >
-              Cancelar
-            </Button>
-          </ModalFooter>
-        </Modal>
+            <input
+              className="form-control"
+              readOnly
+              name="id"
+              type="text"
+              value={input.id}
+            />
+          </FormGroup>
 
+          <FormGroup>
+            <label>Personaje:</label>
+            <input
+              className="form-control"
+              name="personaje"
+              type="text"
+              onChange={(e) => handleChange(e)}
+              value={input.personaje}
+            />
+          </FormGroup>
 
+          <FormGroup>
+            <label>Anime:</label>
+            <input
+              className="form-control"
+              name="anime"
+              type="text"
+              onChange={(e) => handleChange(e)}
+              value={input.anime}
+            />
+          </FormGroup>
+        </ModalBody>
 
-        <Modal isOpen={this.state.modalInsertar}>
-          <ModalHeader>
-           <div><h3>Insertar Personaje</h3></div>
-          </ModalHeader>
+        <ModalFooter>
+          <Button color="primary" onClick={() => editar(input)}>
+            Editar
+          </Button>
+          <Button color="danger" onClick={() => cerrarModalActualizar()}>
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
 
-          <ModalBody>
-            <FormGroup>
-              <label>
-                Id: 
-              </label>
-              
-              <input
-                className="form-control"
-                readOnly
-                type="text"
-                value={this.state.data.length+1}
-              />
-            </FormGroup>
-            
-            <FormGroup>
-              <label>
-                Personaje: 
-              </label>
-              <input
-                className="form-control"
-                name="personaje"
-                type="text"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
-            
-            <FormGroup>
-              <label>
-                Anime: 
-              </label>
-              <input
-                className="form-control"
-                name="anime"
-                type="text"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
-          </ModalBody>
+      <Modal isOpen={modalInsertar}>
+        <ModalHeader>
+          <div>
+            <h3>Insertar Personaje</h3>
+          </div>
+        </ModalHeader>
 
-          <ModalFooter>
-            <Button
-              color="primary"
-              onClick={() => this.insertar()}
-            >
-              Insertar
-            </Button>
-            <Button
-              className="btn btn-danger"
-              onClick={() => this.cerrarModalInsertar()}
-            >
-              Cancelar
-            </Button>
-          </ModalFooter>
-        </Modal> */}
+        <ModalBody>
+          <FormGroup>
+            <label>Id:</label>
+
+            <input
+              className="form-control"
+              readOnly
+              type="text"
+              value={info?.length + 1 || 1}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <label>Personaje:</label>
+            <input
+              className="form-control"
+              name="personaje"
+              type="text"
+              onChange={(e) => handleChange(e)}
+            />
+          </FormGroup>
+
+          <FormGroup>
+            <label>Anime:</label>
+            <input
+              className="form-control"
+              name="anime"
+              type="text"
+              onChange={(e) => handleChange(e)}
+            />
+          </FormGroup>
+        </ModalBody>
+
+        <ModalFooter>
+          <Button color="primary" onClick={() => insertar()}>
+            Insertar
+          </Button>
+          <Button
+            className="btn btn-danger"
+            onClick={() => cerrarModalInsertar()}
+          >
+            Cancelar
+          </Button>
+        </ModalFooter>
+      </Modal>
     </div>
   );
 };
