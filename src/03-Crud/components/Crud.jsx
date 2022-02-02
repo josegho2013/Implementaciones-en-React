@@ -56,6 +56,7 @@ const Crud = () => {
   };
 
   const insertar = () => {
+    //id: info.length + 1,
     let test = info;
     test.push(input);
     setInfo(test);
@@ -71,8 +72,6 @@ const Crud = () => {
         arreglo[contador].personaje = dato.personaje;
         arreglo[contador].anime = dato.anime;
       }
-      console.log("01registro", registro);
-      console.log("02dato", dato);
 
       contador++;
     });
