@@ -29,7 +29,7 @@ const palo = [
 
 const Crud = () => {
   const [info, setInfo] = useState(palo);
-  const [modalActualizar, setModalActualizar] = useState(false);
+  const [modalEditar, setModalEditar] = useState(false);
   const [modalInsertar, setModalInsertar] = useState(false);
 
   const [input, setInput] = useState({
@@ -38,14 +38,13 @@ const Crud = () => {
     anime: "",
   });
 
-  const mostrarModalActualizar = (dato) => {
-    setModalActualizar(input)
-    setModalActualizar(true)
-    
+  const mostrarModalEditar = (dato) => {
+    setInput(dato);
+    setModalEditar(true);
   };
 
-  const cerrarModalActualizar = () => {
-    setModalActualizar(false);
+  const cerrarModalEditar = () => {
+    setModalEditar(false);
   };
 
   const mostrarModalInsertar = () => {
@@ -57,23 +56,28 @@ const Crud = () => {
   };
 
   const insertar = () => {
-    let test = info
-    test.push(input)
+    let test = info;
+    test.push(input);
     setInfo(test);
     setModalInsertar(false);
   };
 
   const editar = (dato) => {
     var contador = 0;
+    var arreglo = info;
 
-    info.map((item) => {
-      if (dato.id == item.id) {
-        info[contador].personaje = dato.personaje;
-        info[contador].anime = dato.anime;
+    arreglo.map((registro) => {
+      if (dato.id === registro.id) {
+        arreglo[contador].personaje = dato.personaje;
+        arreglo[contador].anime = dato.anime;
       }
+      console.log("01registro", registro);
+      console.log("02dato", dato);
+
       contador++;
     });
-    setInfo({ data: info, modalActualizar: false });
+    setInput(arreglo);
+    setModalEditar(false);
   };
 
   const eliminar = (dato) => {
@@ -89,14 +93,14 @@ const Crud = () => {
         }
         contador++;
       });
-      setInfo({ data: arreglo, modalActualizar: false });
+      setInput({ data: arreglo, modalActualizar: false });
     }
   };
 
   const handleChange = (e) => {
     setInput({
       ...input,
-      id: info.length + 1,
+      // id: info.length + 1,
       [e.target.name]: e.target.value,
     });
   };
@@ -122,7 +126,6 @@ const Crud = () => {
           <tbody>
             {info.length > 0 &&
               info?.map((dato) => {
-                console.log("dato",dato)
                 return (
                   <tr key={dato.id}>
                     <td>{dato.id}</td>
@@ -132,7 +135,7 @@ const Crud = () => {
                     <td>
                       <Button
                         color="primary"
-                        onClick={() => mostrarModalActualizar(dato)}
+                        onClick={() => mostrarModalEditar(dato)}
                       >
                         Editar
                       </Button>{" "}
@@ -147,7 +150,7 @@ const Crud = () => {
         </Table>
       </Container>
 
-      <Modal isOpen={modalActualizar}>
+      <Modal isOpen={modalEditar}>
         <ModalHeader>
           <div>
             <h3>Editar Registro</h3>
@@ -157,13 +160,12 @@ const Crud = () => {
         <ModalBody>
           <FormGroup>
             <label>Id:</label>
-
             <input
               className="form-control"
               readOnly
               name="id"
               type="text"
-              value={input.id}
+              value={input.id || ""}
             />
           </FormGroup>
 
@@ -194,7 +196,7 @@ const Crud = () => {
           <Button color="primary" onClick={() => editar(input)}>
             Editar
           </Button>
-          <Button color="danger" onClick={() => cerrarModalActualizar()}>
+          <Button color="danger" onClick={() => cerrarModalEditar()}>
             Cancelar
           </Button>
         </ModalFooter>
