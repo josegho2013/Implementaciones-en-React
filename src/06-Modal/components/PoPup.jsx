@@ -36,7 +36,7 @@ const PoPup = () => {
         </div>
       </div>
       <Modal isOpen={abierto} style={modalStyles}>
-        <ModalHeader> Iniciar Seccion</ModalHeader>
+        <ModalHeader> Iniciar Sesion</ModalHeader>
 
         <ModalBody>
           <FormGroup>
