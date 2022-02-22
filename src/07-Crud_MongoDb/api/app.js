@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-// const url = "";
 const url = "mongodb://localhost/continentes";
 
 async function connect() {
@@ -29,4 +28,36 @@ const mostrar = async () => {
   console.log(pais);
 };
 
-mostrar();
+const crear = async () => {
+  const paises = new ContinenteModel({
+    pais: "colombia",
+    capital: "bogota",
+    poblacion: "8",
+  });
+
+  const resultado = await paises.save();
+  console.log(resultado);
+};
+
+const actualizar = async (id) => {
+  const capital = await ContinenteModel.updateOne(
+    { _id: id },
+    {
+      $set: {
+        pais: "portugal modificado",
+        capital: "lisboa modificado",
+      },
+    }
+  );
+};
+
+const eliminar = async (id) => {
+  const pais = await ContinenteModel.deleteOne({ _id: id });
+  console.log(pais);
+};
+
+//llamada a los procedimientos
+//mostrar();
+//crear()
+//actualizar("621422416c83af9c39062990")
+//eliminar("621422416c83af9c39062990");
