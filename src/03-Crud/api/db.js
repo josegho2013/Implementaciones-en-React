@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const url = "mongodb://localhost/continentes";
+const url = "mongodb://localhost/personajes";
 
 async function connect() {
   try {
@@ -13,4 +13,4 @@ async function connect() {
   }
 }
 
-export default connect
+connect()
