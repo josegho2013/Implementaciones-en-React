@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { connect } from "../database/db";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Table,
@@ -99,7 +100,7 @@ const Crud = () => {
   const handleChange = (e) => {
     setInput({
       ...input,
-      // id: info.length + 1,
+     
       [e.target.name]: e.target.value,
     });
   };
