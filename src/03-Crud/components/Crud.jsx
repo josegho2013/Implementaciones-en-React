@@ -29,7 +29,7 @@ import {
 // console.log("01INFO", info)
 
 const Crud = () => {
-  const [info, setInfo] = useState(palo);
+  const [info, setInfo] = useState();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalInsertar, setModalInsertar] = useState(false);
 
