@@ -1,9 +1,17 @@
-import mongoose from 'mongoose'
-const url = 'mongodb://localhost:27017/anime'
-mongoose.connect(url)
+import express  from "express"
+import cors from 'cors'
+//importamos la conexión a la DB
+import db from "../database/db.js"
+//importamos nuestro enrutador
+import router from './routes/routes.js'
 
-const db = mongoose.connection
-db.on('open', ()=>{ console.log("¡Conectado a MongoDB!")} )
-db.on('error', ()=>{ console.log("¡Error al conectar a MongoDB!")} )
+const app = express()
 
-export default db
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use('/personajes', router)
+
+app.listen(1337, () => {
+    console.log('Server UP running in http://localhost:1337/')
+})

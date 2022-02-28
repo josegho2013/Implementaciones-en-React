@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "db.js",
+  "type": "module",
   "scripts": {
-    "test": "nodemon db.js"
+    "start": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
